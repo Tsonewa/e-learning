@@ -1,0 +1,38 @@
+<main>
+   
+    <section class="video-section">
+        <h1>{{streamCourse.name}}</h1>
+        <div class="video-wrapper">
+
+            <iframe class="e2e-iframe-trusted-src"
+           [src]="trustedUrl"
+            title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
+            clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+             </iframe>
+
+             
+        <figcaption>
+          <button id="play" aria-label="Play" role="button">►</button>
+          </figcaption>
+        </div>
+        <div class="vieo-tet-wrapper">
+            <h2>Lecture Description</h2>
+            <p>{{currentLecture?.lectureDescription}}</p>
+            <h2>Instructor</h2>
+            <h4>{{streamCourse.lector}}</h4>
+            <p>{{streamCourse.lectorDescription}}</p>
+        </div>
+    </section>
+<section class="lectures-section">
+    <aside class="lectures-wrapper">
+        <h2>Lectures</h2>
+        <ul *ngFor="let lecture of streamCourse.lectures; let i = index">
+            <button (click)="onClick(lecture)"> 
+            <li> {{i+1}}. {{lecture.lectureName}}</li>
+            </button>
+        </ul>
+        <button>View More</button>
+    </aside>
+</section>
+
+</main>

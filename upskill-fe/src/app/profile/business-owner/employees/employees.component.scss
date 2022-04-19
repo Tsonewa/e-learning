@@ -1,0 +1,60 @@
+@import "../../../../styles.scss";
+@import "../../../../variables";
+
+.container {
+  width: 32%;
+  height: fit-content; 
+  margin-top: 200px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.card {
+  background: white;
+}
+.toolbar {
+  background: #296cfb;
+  &-row {
+    @include flex(row, wrap, space-between, center);
+    &-button{
+      border-radius: 50%;
+      background: white;
+    }
+  }
+  
+}
+.employee {
+  @include flex(row, wrap, space-between, center);
+  border-bottom: 1px solid gray;
+  &-name {
+    padding-left: 20px;
+    padding-top: 20px;
+    color: #296cfb;
+    font-weight: bold;
+    width: 50%;
+  }
+  &-email {
+    padding-top: 20px; 
+    text-align: start;
+    width: 50%;
+  }
+}
+
+.view-more {
+  display: flex;
+  justify-content: center;
+  &-button {
+    background: white;
+    color: #296cfb;
+    font-weight: 400;
+    font-size: large;
+    padding-top: 30px;
+    padding-right: 30px;
+    padding-bottom: 3%;
+  }
+}
+
+.no-employee{
+  text-align: center;
+  height: 100px;
+  padding-top: 15px;
+}

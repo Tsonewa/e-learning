@@ -1,0 +1,83 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;}
+
+.wrapper{
+    width: 60%;
+}
+
+.right-wrapper{
+    min-width: 300px;
+    margin-top: 40px;
+    margin-left: 50px;
+}
+
+.text-wrapper{
+    text-align: center;
+}
+
+.text-wrapper > h2{
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-size: 25px;
+    margin: 0px;
+}
+
+.text-wrapper > p {
+    margin-top: 5px;
+}
+
+.login-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.login-form > input {
+    padding: 8px;
+    border: 1px solid #296cfb;
+    margin: 16px 0px;
+    width: 100%;
+}
+.sign-up-btn{
+    background: #296CFB;
+    border: 1px solid #296cfb;
+    padding: 7px 35px;
+    color: white;
+    letter-spacing: 1px;
+    margin-right: 20px;
+}
+
+.sign-up-btn-white{
+    background: transparent;
+    border: 1px solid #296cfb;
+    padding: 9px 35px;
+    color: #296cfb;
+    letter-spacing: 1px;
+    margin: 20px 0;
+    text-decoration: none;
+}
+
+.form-buttons{
+    align-self: center;
+    margin-top: 20px;
+}
+
+::ng-deep.mat-error{
+    background-color: #F8D7DA;
+    color: #9E2940;
+    padding: 10px;
+}
+
+@media screen and (max-width: 1024px) {
+   .container{
+    justify-content: center;
+   }
+
+    .graphic {
+      display: none;
+      margin: auto;
+    }
+  }

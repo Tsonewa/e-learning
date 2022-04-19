@@ -1,0 +1,33 @@
+<div class="custom-card">
+  <div class="custom-card-bg px-3">
+    <img [src]="coach?.picture" (click)="onDetailsDialog(coach.id)">
+  </div>
+  <div class="custom-card-details row g-0 m-0 p-4">
+    <div class="col">
+      <p class="coach-topic">{{coach?.topic}}</p>
+      <p class="price" *ngIf="!(isBusinessOwner$|async)">Session: 30min</p>
+      <p class="price" *ngIf="!(isEmployee$|async)"> {{coach?.price}}€ per person</p>
+    </div>
+    <div class="col text-end">
+      <p>{{coach?.name}}</p>
+      <p>{{coach?.company}}<i class="fas fa-home-alt"></i></p>
+      <!--
+      <img src="./assets/img/google.png" alt="Coach company" height="29">
+      -->
+    </div>
+    <div class="col-12 mt-2 d-flex justify-content-center">
+      <button class="btn primary-btn" *ngIf="isBusinessOwner$|async" (click)="removeCoach(coach.id, $event)">Remove
+      </button>
+      <button class="btn primary-btn" *ngIf="!coach.owned && isEmployee$|async" (click)="onDetailsDialog(coach.id)">
+        Book
+      </button>
+      <button class="btn primary-btn" *ngIf="endDate > now && coach.owned" [routerLink]="['/calender', coach.id]">
+        New Slot
+      </button>
+      <button class="btn primary-btn" *ngIf="endDate < now && coach.owned" [routerLink]="['/feedback', coach.id]">
+        Feedback
+      </button>
+    </div>
+  </div>
+</div>
+

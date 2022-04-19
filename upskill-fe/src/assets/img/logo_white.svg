@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   width="74.473"
+   height="30"
+   viewBox="0 0 19.704314 7.9375002"
+   version="1.1"
+   id="svg8">
+  <defs
+     id="defs2" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1">
+    <g
+       id="Group_5"
+       data-name="Group 5"
+       transform="matrix(0.32687477,0,0,0.32687477,-71.553846,-110.8671)"
+       style="stroke:#ffffff">
+      <path
+         id="Path_3"
+         data-name="Path 3"
+         d="m 182.893,253.462 h -12.906 l 16.8,-18.491 21.047,17.429 12.8,-17.433"
+         transform="translate(54,107.744)"
+         fill="none"
+         stroke="#296cfb"
+         stroke-width="4.5"
+         style="stroke:#ffffff" />
+      <path
+         id="Path_4"
+         data-name="Path 4"
+         d="m 303.565,341.091 h 21.88 v 21.882"
+         transform="translate(-48.511,0.332)"
+         fill="none"
+         stroke="#296cfb"
+         stroke-width="4.5"
+         style="stroke:#ffffff" />
+    </g>
+  </g>
+</svg>

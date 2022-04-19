@@ -1,0 +1,62 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.wrapper{
+    width: 60%;
+  margin-left: 20px;
+  margin-top: 30px;
+}
+
+.logo{
+    text-align: center;
+}
+
+.register-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.register-form > input{
+        padding: 8px;
+        border: 1px solid #296cfb;
+        margin: 8px 0px;
+        width: 100%;
+}
+
+.form-buttons{
+    text-align-last: center;
+}
+
+.form-buttons > h3{
+    color: #296cfb;
+    font-weight: 200;
+}
+
+.login-anchor {
+    font-weight: bold;
+}
+
+.sign-up-btn{
+    background: #296CFB;
+    border: 1px solid #296cfb;
+    padding: 7px 30px;
+    color: white;
+    letter-spacing: 1px;
+    margin: 10px 0px;
+}
+
+@media screen and (max-width: 1024px) {
+   .container{
+    justify-content: center;
+   }
+    
+    .graphic {
+      display: none;
+      margin: auto;
+    }
+  }

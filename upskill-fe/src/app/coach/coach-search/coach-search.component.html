@@ -1,0 +1,23 @@
+<div class="custom-card">
+  <div class="custom-card-bg px-3">
+    <img [src]="coach.picture" alt="#" (click)="onDetailsDialog(coach.id)">
+    <button class="btn edit-btn m-0 p-0" *ngIf="isAdmin$|async" [routerLink]="['/edit', coach.id]" >
+      <img src="./assets/img/pencil.svg" alt="edit">
+    </button>
+  </div>
+  <div class="custom-card-details row g-0 m-0 p-4">
+    <div class="col">
+      <p class="coach-topic">{{coach.topic}}</p>
+      <p class="price">{{coach.price}}€ per person</p>
+    </div>
+    <div class="col text-end">
+      <p>{{coach.name}}</p>
+      <p>{{coach.company}}<i class="fas fa-home-alt"></i></p>
+    </div>
+    <div class="col-12 mt-2 d-flex justify-content-center">
+      <button class="btn primary-btn" *ngIf="!coach.owned" (click)="addCoachToBo(coach.id, $event) ">Add</button>
+      <button class="btn primary-btn" *ngIf="isAdmin$|async" (click)="deleteCoach(coach.id, $event)">Delete</button>
+      <button class="btn primary-btn" *ngIf="coach.owned" (click)="removeCoach(coach.id, $event)">Remove</button>
+    </div>
+  </div>
+</div>

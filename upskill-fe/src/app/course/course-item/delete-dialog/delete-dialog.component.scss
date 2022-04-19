@@ -1,0 +1,78 @@
+::ng-deep.dialog-text-content{
+    background-color: #296CFB;
+    font-family: Montserrat, serif;
+    padding-left: 30px;
+    padding-right: 20px;
+    padding-top: 59px;
+    text-align: center;
+    padding-bottom: 50px;
+    font-size: 25px;
+    color: white;
+    line-height: 1;
+    width: 552px;
+    line-height: 1;
+    margin: -24px;
+}
+
+::ng-deep.mat-dialog-btn-wrapper{
+    min-height: 115px;
+    background-color: #fff;
+    width: 551px;
+    margin-left: -24px;
+    margin-right: -24px;
+    padding: 9px 0 12px 1px;
+    place-content: center;
+}
+
+#close-delete{
+    top: -63px;
+    right: 0px;
+    color: white;
+  }
+  
+  .close-btn{
+    float: right;
+    top: -24px;
+    right: -24px;
+    border: none;
+    width: 25px;
+    height: 25px;
+    background-color: transparent;
+  }
+  
+::ng-deep.btn-dialog{
+    width: 100px;
+    background-color: #296CFB;
+    font-family: Montserrat, serif;
+    margin: 20px;
+    color: white;
+    text-transform: uppercase;
+    padding: 10px;
+    border-radius: 1px;
+}
+
+::ng-deep.cancel-btn{
+    background-color: white;
+    color: #296CFB;
+    border: 1px solid #296CFB;
+}
+
+::ng-deep.cancel-btn:hover{
+color: white;
+background-color: #296CFB;
+border: 1px solid white;
+}
+
+::ng-deep.delete-btn:hover{
+    color: #296CFB;
+    background-color: white;
+    border: 1px solid #296CFB;
+    }
+
+::ng-deep.cdk-overlay-container{
+        background-image: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.9)) , url('/src/assets/img/background.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: fixed;
+        z-index: 1000;
+    }

@@ -1,0 +1,204 @@
+<body class="container-fluid m-0 p-0 g-0">
+  <header class="row g-0 m-0 p-0 px-4 pt-4 d-flex align-items-center">
+    <div class="col-12 col-lg-6 ps-4">
+      <h3>Coaches</h3>
+      <p class="mt-4 col-8 col-lg-7">
+        Upskill’s goal is to inspire you to master your technical and personal skills and give you the opportunity to gain
+        knowledge from top specialists in various fields.
+      </p>
+    </div>
+    <div class="col d-none d-lg-flex justify-content-center header-bg">
+      <img src="./assets/img/person_with_speaker.svg" alt="Person with speaker" height="280">
+    </div>
+  </header>
+  <section class="row g-4 m-0 my-4 py-4 px-4">
+  
+    <div >
+      <spinner-loading *ngIf="loading"></spinner-loading>
+    </div>
+  
+      <app-coach-item class="col-12 col-lg-4" *ngFor="let coach of coaches$ | async" [coach]="coach" (onChange)="reloadChange($event)"></app-coach-item>
+  
+    <div class="col-12 col-lg-4">
+      <div class="w-100 h-100 d-flex justify-content-center align-items-center">
+        <!-- Add Button -->
+        <button class="btn add-btn m-0 p-0" type="button" class="btn primary-btn" data-bs-toggle="modal"
+                data-bs-target="#coachModal">
+          <img src="./assets/img/add.svg">
+        </button>
+      </div>
+    </div>
+  </section>
+  <!-- Create Coach Modal -->
+  <div class="modal fade" id="coachModal" tabindex="-1" aria-labelledby="coachModaLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="coachModalLabel">Coach creation</h5>
+          <button type="button" class="btn p-0 m-0" data-bs-dismiss="modal" aria-label="Close">
+            <img src="./assets/img/close_icon.svg" alt="#" height="20">
+          </button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="form" (submit)="createCoach()" enctype="multipart/form-data">
+            <div class="form-input-wrapper">
+              <input type="text" class="form-control" id="coachName" formControlName="name">
+              <label for="coachName" [className]="c.name.value ? 'stay-top' : ''">Coach Name</label>
+            </div>
+            <div class="alert alert-danger" *ngIf="c.name.touched && c.name.errors?.required">
+              This field is required!
+            </div>
+            <div class="alert alert-danger" *ngIf="c.name.errors?.minlength">
+              Length must be {{c.name.errors.minlength.requiredLength}} chars!
+            </div>
+            <div class="form-input-wrapper">
+              <input type="text" class="form-control" id="coachEmail" formControlName="email">
+              <label for="coachEmail" [className]="c.email.value ? 'stay-top' : ''">Coach Email</label>
+            </div>
+            <div class="alert alert-danger" *ngIf="c.email.touched && c.email.errors?.required">
+              This field is required!
+            </div>
+            <div class="form-input-wrapper">
+              <input type="text" class="form-control" id="company" formControlName="company">
+              <label for="company" [className]="c.company.value ? 'stay-top' : ''">Company</label>
+            </div>
+            <div class="alert alert-danger" *ngIf="c.company.touched && c.company.errors?.required">
+              This field is required!
+            </div>
+            <div class="alert alert-danger" *ngIf="c.company.errors?.minlength">
+              Length must be {{c.company.errors.minlength.requiredLength}} chars!
+            </div>
+            <div class="basic-input-wrapper">
+              <label for="coachPicture">Coach Picture</label>
+              <input type="file" class="form-control" id="coachPicture"
+                     (change)="onFileSelected($event)" #fileUpload>
+            </div>
+            <div class="alert alert-danger" *ngIf="c.picture.touched && c.picture.errors?.required">
+              This field is required!
+            </div>
+            <div class="form-input-wrapper">
+              <input type="text" class="form-control" id="pricePerSession" formControlName="price">
+              <label for="pricePerSession" [className]="c.price.value ? 'stay-top' : ''">Price per session</label>
+            </div>
+            <div class="alert alert-danger" *ngIf="c.price.touched && c.price.errors?.required">
+              This field is required!
+            </div>
+            <div class="alert alert-danger" *ngIf="c.price.errors?.min">
+              Length must be {{c.price.errors.min.required}} chars!
+            </div>
+            <div class="form-input-wrapper">
+              <input type="text" class="form-control" id="coachTopic" formControlName="topic">
+              <label for="coachTopic" [className]="c.topic.value ? 'stay-top' : ''">Coach Topic</label>
+            </div>
+            <div class="alert alert-danger" *ngIf="c.topic.touched && c.topic.errors?.required">
+              This field is required!
+            </div>
+            <div class="basic-input-wrapper">
+              <label>Topic Category</label>
+              <select class="form-select multiple-select" formControlName="categories" multiple>
+                <option *ngFor="let cat of categories" [ngValue]="cat">
+                  {{ cat.category }}
+                </option>
+  
+              </select>
+            </div>
+            <div class="alert alert-danger" *ngIf="c.categories.touched && c.categories.errors?.required">
+              This field is required!
+            </div>
+            <div class="basic-input-wrapper">
+              <label>Topic Language</label>
+              <select class="form-select multiple-select" formControlName="languages" multiple>
+                <option *ngFor="let l of languages" [ngValue]="l">
+                  {{ l.language }}
+                </option>
+              </select>
+            </div>
+            <div class="alert alert-danger" *ngIf="c.languages.touched && c.languages.errors?.required">
+              This field is required!
+            </div>
+            <div class="basic-input-wrapper">
+              <label for="startDate">Session start date</label>
+              <input type="datetime-local" class="form-control" id="startDate" formControlName="startDate">
+            </div>
+            <div class="alert alert-danger" *ngIf="c.startDate.touched && c.startDate.errors?.required">
+              This field is required!
+            </div>
+            <div class="basic-input-wrapper">
+              <label for="endDate">Session end date</label>
+              <input type="datetime-local" class="form-control" id="endDate" formControlName="endDate">
+            </div>
+            <div class="alert alert-danger" *ngIf="c.endDate.touched && c.endDate.errors?.required">
+              This field is required!
+            </div>
+            <div class="form-input-wrapper">
+              <textarea class="form-control" id="sessionDescription" formControlName="description"></textarea>
+              <label for="sessionDescription" [className]="c.description.value ? 'stay-top' : ''">Session
+                Description</label>
+            </div>
+            <div class="alert alert-danger" *ngIf="c.description.touched && c.description.errors?.required">
+              This field is required!
+            </div>
+            <div class="form-input-wrapper">
+              <input type="text" class="form-control" id="sessionDuration" formControlName="duration">
+              <label for="sessionDuration" [className]="c.duration.value ? 'stay-top' : ''">Session Duration</label>
+            </div>
+            <div class="alert alert-danger" *ngIf="c.duration.touched && c.duration.errors?.required">
+              This field is required!
+            </div>
+            <div class="form-input-wrapper">
+              <input type="text" class="form-control" id="sessionIntro" formControlName="introductionVideo">
+              <label for="sessionIntro" [className]="c.introductionVideo.value ? 'stay-top' : ''">Session introduction
+                video</label>
+            </div>
+            <div class="alert alert-danger" *ngIf="c.introductionVideo.touched && c.introductionVideo.errors?.required">
+              This field is required!
+            </div>
+            <div class="form-input-wrapper">
+              <input type="text" class="form-control" id="sessionGoals" formControlName="goals">
+              <label for="sessionGoals" [className]="c.goals.value ? 'stay-top' : ''">Session goals</label>
+            </div>
+            <div class="alert alert-danger" *ngIf="c.goals.touched && c.goals.errors?.required">
+              This field is required!
+            </div>
+            <div class="mt-3">
+              <button class="btn primary-outline-btn col-12" type="button" id="addResourceBtn" (click)="createDiv()">Add
+                resource
+              </button>
+            </div>
+            <div class="resources mb-3">
+              <ng-container formArrayName="resources">
+                <ng-container *ngFor="let resource of resources.controls; index as i">
+                  <div [formGroup]="$any(resource)">
+                    <div class="form-input-wrapper">
+                      <label for="sessionResource" [className]="c.resources.value ? 'stay-top' : ''">Resource
+                        title</label>
+                      <input type="text" name="resource" id="sessionResource" class="form-control"
+                             formControlName="title"/>
+  
+                    </div>
+                    <div class="alert alert-danger" *ngIf="c.resources.touched && c.resources.errors?.required">
+                      This field is required!
+                    </div>
+                    <div class="form-input-wrapper">
+                      <label for="filePath" [className]="c.resources.value ? 'stay-top' : ''">Resource Url</label>
+                      <input type="text" class="form-control" id="filePath" formControlName="filePath">
+  
+                    </div>
+                    <div class="alert alert-danger" *ngIf="c.resources.touched && c.resources.errors?.required">
+                      This field is required!
+                    </div>
+                    <button class="btn primary-btn" (click)="removeDiv(i)">Remove</button>
+                  </div>
+                </ng-container>
+              </ng-container>
+            </div>
+            <div class="pt-3">
+              <button class="btn primary-btn col-12" type="submit"  data-bs-dismiss="modal" >Add Coach</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  </body>
+  

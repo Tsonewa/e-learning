@@ -1,0 +1,46 @@
+<main class="container-fluid m-0 p-0 g-0" id="profile">
+  <app-profile-aside class="row m-0 mb-4 pb-4 col-3"></app-profile-aside>
+  <div class="container">
+    <mat-toolbar class="toolbar">
+      <mat-toolbar-row class="toolbar-row">
+        <div
+          [ngrxDispatcher]="countDispatcher"
+          #countDispatcherTemplate="ngrxDispatcher"
+          class="toolbar-row-item"
+        >
+          Employees ( {{ countEmployees$ | async }} )
+        </div>
+        <div class="toolbar-row-item">Email</div>
+        <div class="toolbar-row-item">
+          <button
+            class="toolbar-row-button"
+            (click)="openDialog()"
+            mat-mini-fab
+            color="accent"
+          >
+            +
+          </button>
+        </div>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <div class="toolbar no-employee" *ngIf="(countEmployees$ | async)==0">There are no registered employees</div>
+    <div [ngrxDispatcher]="ngrxDispatcher" #employeeDispatcher="ngrxDispatcher">
+      <ng-container *ngIf="employeeDispatcher.isReady">
+        <div class="employee" *ngFor="let emp of employees$ | async">
+          <p class="employee-name">{{ emp.fullName }}</p>
+          <p class="employee-email">{{ emp.email }}</p>
+        </div>
+      </ng-container>
+    </div>
+    <div class="view-more">
+      <button
+        *ngIf="(countEmployees$ | async)!=0"
+        class="view-more-button"
+        (click)="clickViewMore()"
+        mat-flat-button
+      >
+        View More
+      </button>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,43 @@
+<body class="container-fluid m-0 p-0 g-0">
+    <header class="row g-0 m-0 p-0 px-4 py-4 catalog-header d-flex align-items-center">
+        <div class="col-lg">
+            <div class="row g-0 m-0 p-0">
+                <div class="col-12 col-lg-6">
+                    <h4>Category</h4>
+                    <div class="row g-0 m-0 p-0">
+                        <div class="col-6" >
+                            <div class="form-check" *ngFor="let category of checkboxesDataListCategories">
+                                <input class="form-check-input" name="options" type="checkbox" id={{category.label}} [(ngModel)]="category.isChecked" (change)="changeSelection()">
+                                <label class="form-check-label" for="art">
+                                    {{category.label}}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6 ps-lg-4 border-left" >
+                    <h4>Languages</h4>
+                    <div class="form-check" *ngFor="let item of checkboxesDataList">
+                        <input class="form-check-input" type="checkbox" id={{item.label}} [(ngModel)]="item.isChecked" (change)="changeSelection()">
+                        <label class="form-check-label" for={{item.label}}>
+                            {{item.label}}
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+            <img src="./assets/img/person_with_speaker.svg" alt="Person with speaker" height="280">
+        </div>
+    </header>
+    <main class="row m-0 p-0 mb-4 pt-4 pb-4">
+
+        <div>
+            <spinner-loading *ngIf="loading"></spinner-loading>
+          </div>
+
+          <div *ngIf="(allCourses$ | async)?.length == 0">No courses found!</div>
+
+           <app-course-item class="col-12 col-lg-4" *ngFor="let course of allCourses$ | async" [course]="course"></app-course-item>
+    </main>
+</body>

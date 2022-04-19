@@ -1,0 +1,95 @@
+
+<div class="container">
+  <div class="graphic"><img src="assets/img/bo-register.png" alt="" /></div>
+  <div class="wrapper">
+    <div class="logo">
+      <a>
+        <img class="logo-item" src="assets/img/header-arrow.png" alt="logo" />
+      </a>
+    </div>
+    <form class="register-form" [formGroup]="registerForm" (ngSubmit)="register()">
+      <input
+        class="form-input"
+        type="text"
+        placeholder="Full Name"
+        formControlName="fullName"
+      />
+      <div
+        class="alert alert-danger"
+        *ngIf="f.fullName.errors?.required && f.fullName.touched"
+      >
+        Field is required!
+      </div>
+      <input
+        class="form-input"
+        type="text"
+        placeholder="Company Name"
+        formControlName="companyName"
+      />
+      <div
+        class="alert alert-danger"
+        *ngIf="f.companyName.errors?.required && f.companyName.touched"
+      >
+        Field is required!
+      </div>
+      <div
+        class="alert alert-danger"
+        *ngIf="av.errors?.companyExist && f.companyName.touched"
+      >
+        Company with the given name already exists!
+      </div>
+      <input
+        class="form-input"
+        type="text"
+        placeholder="Email Address*"
+        formControlName="email"
+      />
+      <div class="alert alert-danger" *ngIf="f.email.errors?.required && f.email.touched">
+        Field is required!
+      </div>
+      <div class="alert alert-danger" *ngIf="f.email.errors?.email && f.email?.touched">
+        Please, enter valid email!
+      </div>
+      <input
+        class="form-input"
+        type="password"
+        placeholder="Password*"
+        formControlName="password"
+      />
+      <div
+        class="alert alert-danger"
+        *ngIf="f.password.errors?.required && f.password.touched"
+      >
+        Field is required!
+      </div>
+      <input
+        class="form-input"
+        type="password"
+        placeholder="Confirm Password*"
+        formControlName="confirmPassword"
+      />
+      <div
+        class="alert alert-danger"
+        *ngIf="
+          f.confirmPassword.errors?.passwordMismatch &&
+          f.confirmPassword?.touched
+        "
+      >
+        Passwords does not match!
+      </div>
+      <div class="form-buttons">
+        <button
+          class="sign-up-btn"
+          type="submit"
+          [disabled]="!registerForm.valid"
+          [ngStyle]="{
+            cursor: !registerForm.valid ? 'not-allowed' : 'pointer'
+          }"
+        >
+          SignUp
+        </button>
+        <h3>Already have an account? <a class="login-anchor" [routerLink]="['/login']">Login here.</a></h3>
+      </div>
+    </form>
+  </div>
+</div>

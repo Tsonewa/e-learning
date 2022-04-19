@@ -1,0 +1,110 @@
+<body class="container-fluid m-0 p-0 g-0">
+<header class="row g-0 m-0 p-0 px-4 py-4 catalog-header d-flex align-items-center">
+  <div class="col-lg">
+    <div class="row g-0 m-0 p-0">
+      <div class="col-12 col-lg-6">
+        <h4>Category</h4>
+        <div class="row g-0 m-0 p-0">
+          <div class="col-6">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="ART" id="art" (change)="select($event)">
+              <label class="form-check-label" for="art">
+                Art
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="DESIGN" id="design" (change)="select($event)">
+              <label class="form-check-label" for="design">
+                Design
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="MARKETING" id="marketing"
+                     (change)="select($event)">
+              <label class="form-check-label" for="marketing">
+                Marketing
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="LEADERSHIP" id="leadership"
+                     (change)="select($event)">
+              <label class="form-check-label" for="leadership">
+                Leadership
+              </label>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="PERSONAL_DEVELOPMENT" id="personal_development"
+                     (change)="select($event)">
+              <label class="form-check-label" for="personal_development">
+                Personal Development
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="DATA_SCIENCE" id="data_science"
+                     (change)="select($event)">
+              <label class="form-check-label" for="data_science">
+                Data Science
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="COMPUTER_SCIENCE" id="computer_science"
+                     (change)="select($event)">
+              <label class="form-check-label" for="computer_science">
+                Computer Science
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-lg-6 ps-lg-4 border-left">
+        <h4>Languages</h4>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="ENGLISH" id="english" (change)="secondSelect($event)">
+          <label class="form-check-label" for="english">
+            English
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="SPANISH" id="spanish" (change)="secondSelect($event)">
+          <label class="form-check-label" for="spanish">
+            Spanish
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="GERMAN" id="german" (change)="secondSelect($event)">
+          <label class="form-check-label" for="german">
+            German
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="FRENCH" id="french" (change)="secondSelect($event)">
+          <label class="form-check-label" for="french">
+            French
+          </label>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="col-auto d-none d-lg-block">
+    <img src="./assets/img/person_with_speaker.svg" alt="Person with speaker" height="280">
+  </div>
+</header>
+<main class="row m-0 p-0 mb-4 pt-4 pb-4">
+  <div *ngIf="searchs; else allCoach" class="container-fluid m-0 p-0 g-0" id="profile">
+    <div *ngIf="searchs.length===0">No coaches hire!
+      <button class="btn primary-btn" (click)="backCatalog()"> < Back </button>
+    </div>
+    <app-coach-search class="row m-0 mb-4 pb-4 col-3" *ngFor="let search of searchs" [coach]="search" (onChange)="reloadSearchChange($event)"></app-coach-search>
+  </div>
+  <ng-template #allCoach>
+    <div >
+      <spinner-loading *ngIf="loading"></spinner-loading>
+    </div>
+    <app-coach-item class="col-12 col-lg-4" *ngFor="let coach of adCoaches$ | async" [coach]="coach" (onChange)="reloadChange($event)"></app-coach-item>
+    <app-coach-item-bo class="col-12 col-lg-4" *ngFor="let bo of boCoaches$ | async" [coach]="bo" (onChange)="reloadChange($event)"></app-coach-item-bo>
+  </ng-template>
+</main>
+</body>

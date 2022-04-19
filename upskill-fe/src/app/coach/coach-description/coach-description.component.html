@@ -1,0 +1,12 @@
+<body class="container-fluid m-0 p-0 g-0" id="profile">
+<app-profile-aside class="row m-0 mb-4 pb-4 col-3"></app-profile-aside>
+  <section class="col-8">
+    <div class="row g-4 m-0 p-0 mt-4 pt-4">
+      <div >
+        <spinner-loading *ngIf="loading"></spinner-loading>
+      </div>
+      <div *ngIf="!emplCoaches$ && !loading">No coaches hire!</div>
+      <app-coach-item-bo class="col-12 col-lg-4" *ngFor="let bo of emplCoaches$ | async" [coach]="bo" (onChange)="reloadChange($event)"></app-coach-item-bo>
+    </div>
+  </section>
+</body>

@@ -1,0 +1,25 @@
+<body class="container-fluid m-0 p-0 g-0" id="profile">
+<app-profile-aside class="row m-0 mb-4 pb-4 col-3"></app-profile-aside>
+<!-- Default form contact -->
+<section class="col-8">
+<form class="text-center border border-light p-5" [formGroup]="contactForm" (submit)="sendMessage()">
+  <p class="h4 mb-4">Feedback</p>
+  <!-- Subject -->
+  <label>Subject</label>
+  <select formControlName="subjects" class="browser-default custom-select mb-4">
+    <option value="" disabled>Choose option</option>
+    <option value="Feedback" selected>Feedback</option>
+    <option value="Report a bug">Report a bug</option>
+    <option value="Feature request">Feature request</option>
+  </select>
+  <!-- Message -->
+  <div class="form-group">
+    <textarea formControlName="message" class="form-control rounded-0" id="exampleFormControlTextarea2"
+              rows="3" placeholder="Message"></textarea>
+  </div>
+  <!-- Send button -->
+  <button class="btn primary-btn col-3" type="submit" >Send</button>
+</form>
+<!-- Default form contact -->
+</section>
+</body>

@@ -1,0 +1,35 @@
+<div class="modal-wrapper">
+  <div class="header-wrapper">
+    <h1>Personal Information</h1>
+    <button mat-icon-button class="close-btn" [mat-dialog-close]="true">
+      <mat-icon class="close-icon" color="white" style="float: right; position: relative;">close</mat-icon>
+    </button>
+  </div>
+  <div class="sections-wrapper">
+    <form [formGroup]="formEdit" enctype="multipart/form-data" id="editForm">
+    <section class="left-section-wrapper">
+      <div class="description-wrapper">
+        <img [src]="data.details.picture ? data.details.picture : './assets/img/profile_pic.png'" alt="ProfileImage" width="200px" height="200px">
+        <input type="file" class="picture-upload picture-wrapper" id="coachPicture"
+               (change)="onFileSelected($event)" >
+        <h2>Edit Photo</h2>
+      </div>
+    </section>
+    <section class="right-section-wrapper">
+      <div class="inputs-wrapper">
+        <input type="text" class="profile-input" id="coachName" formControlName="fullName" [ngModel]="data.details.fullName">
+        <input type="text" class="profile-input" disabled id="coachEmail" value="{{data.details.email}}">
+        <input type="password" class="profile-input" id="password" formControlName="password" placeholder="Password">
+        <input type="password" class="profile-input" id="confirmPassword" formControlName="confirmPassword" placeholder="Confirm password">
+        <textarea  class="profile-input" id="coachSummary" formControlName="summary" placeholder="Profile Summary" [(ngModel)]="data.details.summary"></textarea>
+      </div>
+        <div class="btn-wrapper">
+          <button [mat-dialog-close]="true" class="btn-dialog cancel-btn" id="no-button" (click)="close()">Cancel</button>
+          <button class="enroll-btn" (click)="save(data.details.id)">
+            Save
+          </button>
+        </div>
+    </section>
+    </form>
+  </div>
+</div>

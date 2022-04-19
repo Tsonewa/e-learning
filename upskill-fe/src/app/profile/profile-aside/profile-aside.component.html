@@ -1,0 +1,62 @@
+<aside class="col-12 px-12">
+  <div class="aside-options d-flex">
+    <img src="./assets/img/bookmark.svg" alt="Bookmark" width="50" />
+    <button class="btn m-0 p-0 px-3 align-self-end" (click)="editProfile()">
+      <img src="./assets/img/black-pencil.svg" alt="Edit" height="25" />
+    </button>
+  </div>
+  <div class="d-flex px-4 align-items-center">
+    <div class="big-avatar">
+      {{ (getCurrentUser$ | async)?.fullName.substring(0, 1) }}
+    </div>
+    <div class="ps-3">
+      <p>{{ (getCurrentUser$ | async)?.fullName }}</p>
+      <p class="company-name m-0">{{ (getCurrentUser$ | async)?.company }}</p>
+    </div>
+  </div>
+  <ul class="list-unstyled mt-4 pt-4 px-4">
+    <!-- ADMIN PROFILE ASIDE -->
+    <li *ngIf="isAdmin$ | async">
+      <a [routerLink]="['/dashboard-admin']">Dashboard</a>
+    </li>
+    <li *ngIf="isAdmin$ | async">
+      <a [routerLink]="['/clients']">Clients</a>
+    </li>
+    <li *ngIf="isAdmin$ | async">
+      <a [routerLink]="['/revenue']">Revenue</a>
+    </li>
+    <!-- BUSINESS OWNER PROFILE ASIDE -->
+    <li *ngIf="isBusinessOwner$ | async">
+      <a [routerLink]="['/dashboard-company']">Dashboard</a>
+    </li>
+    <li *ngIf="isBusinessOwner$ | async">
+      <a [routerLink]="['/company/catalog']">Active Courses</a>
+    </li>
+    <li *ngIf="isBusinessOwner$ | async">
+      <a [routerLink]="['/bo-profile']" class="active-link">Active Coaches</a>
+    </li>
+    <li *ngIf="isBusinessOwner$ | async">
+      <a [routerLink]="['/employees']" [queryParams]="{ page: 1 }" (click)="stateHandler()">Employees</a>
+    </li>
+    <li *ngIf="isBusinessOwner$ | async">
+      <a [routerLink]="['/invoice']">Invoice</a>
+    </li>
+    <!-- EMPLOYEE PROFILE ASIDE -->
+    <li *ngIf="isEmployee$ | async">
+      <a [routerLink]="['/employee/dashboard']">Dashboard</a>
+    </li>
+    <li *ngIf="isEmployee$ | async">
+      <a [routerLink]="['/employee/catalog']">Courses</a>
+    </li>
+    <li *ngIf="isEmployee$ | async">
+      <a [routerLink]="['/employee-profile']">Couches</a>
+    </li>
+    <li *ngIf="isEmployee$ | async">
+      <a [routerLink]="['/achievements']">Achievements</a>
+    </li>
+
+    <li>
+      <button (click)="logout()" class="logout-btn">Log Out</button>
+    </li>
+  </ul>
+</aside>

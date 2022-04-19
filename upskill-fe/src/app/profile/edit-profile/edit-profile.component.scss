@@ -1,0 +1,117 @@
+
+::ng-deep.profile-mat-dialog-container{
+  mat-dialog-container{
+    background: white;
+    padding: 0px;
+    width: 700px;
+  }
+}
+
+::ng-deep.cdk-overlay-container{
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.9)) , url('/src/assets/img/background.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: fixed;
+  z-index: 1000;
+}
+
+::ng-deep.mat-icon{
+  top: -25px;
+  right: -25px;
+  color: white;
+}
+
+.close-btn{
+  float: right;
+  top: -20px;
+  right: -0px;
+  border: none;
+  width: 25px;
+  height: 25px;
+  background-color: transparent;
+}
+
+
+.modal-wrapper{
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+  width: 700px;
+  font-family: Montserrat,serif;
+}
+
+.header-wrapper{
+  background-color: #296cfb;
+  color: #fff;
+  width: 100%;
+  height: 120px;
+  padding: 40px;
+}
+
+.header-wrapper > h1{
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.left-section-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+}
+
+.right-section-wrapper{
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+
+form{
+  display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.picture-upload{
+  color: #296cfb;
+}
+
+.enroll-btn{
+  background: #296CFB;
+  border: 1px solid #296cfb;
+  padding: 7px 30px;
+  color: white;
+  letter-spacing: 1px;
+}
+
+.cancel-btn{
+  background: transparent;
+  padding: 7px 22px;
+  color: #296cfb;
+  letter-spacing: 1px;
+  border: 1px solid #296cfb;
+  margin-right: 20px;
+  border-radius: 0px;
+}
+
+.profile-input{
+  padding: 8px;
+  border: 1px solid #296cfb;
+  margin: 8px 0px;
+  width: 100%;
+}
+
+.btn-wrapper{
+  text-align: left;
+}
+
+.right-section-wrapper > textarea{
+  height: 100px;
+  padding: 8px;
+  border: 1px solid #296cfb;
+  margin: 10px 0px;
+  width: 100%;
+}
+
+.profile-input:hover, .right-section-wrapper > textarea:hover{
+border: 2px solid rgb(22, 22, 211);
+}

@@ -1,0 +1,23 @@
+<header>
+    <div class="logo">
+        <div class="logo-image"><a [routerLink]="['/home']" ><img src="assets/img/header-arrow.png" alt=""></a></div>
+        <div class="logo-text">upskill</div>
+    </div>
+    <div *ngIf="!(isAuthenticated$|async)" class="not-auth-header">
+     <ul class="list" >
+         <li *ngIf="hideButtonsForLogin" class="list-items"><a [routerLink]="['/login']" routerLinkActive="active" class="list-items-href login" >LogIn</a></li>
+         <li *ngIf="hideButtonsForLogin" class="list-items"><a class="list-items-href demo">Request a Demo</a></li>
+     </ul>
+    </div>
+    <div class="col d-flex justify-content-end align-items-center" *ngIf="isAdmin$ | async">
+    <ul class="list-unstyled list-inline m-0 p-0 nav-links">
+      <li class="list-inline-item">
+        <a [routerLink]="['/admin/all']">Courses</a>
+      </li>
+      <li class="list-inline-item">
+        <a class="active-link" [routerLink]="['/all-admin']">Coaches</a>
+      </li>
+    </ul>
+    </div>
+  <div class="auth-header" *ngIf="isAuthenticated$|async"> {{(currentUser$|async)?.fullName.substring(0,1)}} </div>
+</header>

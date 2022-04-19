@@ -1,0 +1,35 @@
+      <body class="container-fluid m-0 p-0 g-0">
+        <header class="row g-0 m-0 p-0 px-4 pt-4 d-flex align-items-center">
+          <div class="col-12 col-lg-6 ps-4">
+              <h3>Courses</h3>
+              <p class="mt-4 col-8 col-lg-7">
+                  Upskill’s goal is to inspire you to master your technical and personal skills and give you the opportunity to gain knowledge from top specialists in various fields.
+              </p>
+          </div>
+          <div class="col d-none d-lg-flex justify-content-center header-bg">
+              <img src="./assets/img/person_with_speaker.svg" alt="Person with speaker" height="280">
+          </div>
+      </header>
+
+      <section class="row g-4 m-0 my-4 py-4 px-4">
+
+          <div>
+            <spinner-loading *ngIf="loading"></spinner-loading>
+          </div>
+
+        <app-course-item class="col-12 col-lg-4" *ngFor="let course of allCourses$ | async" [course]="course" (onChange)="reloadChange($event)"></app-course-item> 
+
+          <div class="col-12 col-lg-4">
+              <div class="w-100 h-100 d-flex justify-content-center align-items-center">
+                  <!-- Add Button -->
+                  <button class="btn add-btn m-0 p-0" type="button" class="btn primary-btn" data-bs-toggle="modal" data-bs-target="#courseModal">
+                      <img src="./assets/img/add.svg">
+                  </button>
+              </div>
+          </div>
+      </section>
+     <app-create-course></app-create-course>
+        </body>
+      
+
+    

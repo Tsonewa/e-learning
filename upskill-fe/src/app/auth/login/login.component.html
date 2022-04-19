@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="graphic"  ><img src="assets/img/login-employee.png" alt="" /></div>
+    <div class="right-wrapper">
+<div class="text-wrapper">
+  <img
+  class="welcome-item-logo"
+  src="assets/img/header-arrow.png"
+  alt="logo"
+/>
+<h2 class="welcome-item-text">Welcome back!</h2>
+<p class="welcome-item-paragraph">Please login to your account.</p>
+</div>
+    <form class="login-form" [formGroup]="loginForm" (ngSubmit)="login()">
+      <input class="form-input" type="text" placeholder="Email Address*" formControlName="email"/>
+      <div>
+        <mat-error *ngIf="f.email.errors?.required && f.email.touched">
+          Field is required!
+        </mat-error>
+        <mat-error *ngIf="f.email.errors?.email && f.email.touched">
+          Invalid email!
+        </mat-error>
+      </div>
+      <input class="form-input" type="password" placeholder="Password*" formControlName="password"/>
+      <div>
+        <mat-error *ngIf="f.password.errors?.required && f.password.touched">
+          Password is required!
+        </mat-error>
+        <mat-error *ngIf="f.password.errors?.minLength && f.password.touched">
+          Password must contain at least 8 symbols!
+        </mat-error>
+        <mat-error *ngIf="f.password.errors?.maxLength && f.password.touched">
+          Password must contain max 20 symbols!
+        </mat-error>
+      </div>
+      <div class="form-buttons">
+      <button class="sign-up-btn" type="submit" [disabled]="!loginForm.valid"
+              [ngStyle]="{
+            cursor: !loginForm.valid ? 'not-allowed' : 'pointer'
+          }">Login</button>
+      <a class="sign-up-btn-white" [routerLink]="['/register']" >SignUp</a>
+      </div>
+    </form>
+  </div>
+</div>

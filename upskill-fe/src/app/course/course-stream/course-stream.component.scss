@@ -1,0 +1,97 @@
+main{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 15px;
+}
+
+.video-section{
+    width: 55%;
+}
+
+.video-section > h1 {
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+figcaption{
+    background-color: #296CFB;
+    padding: 10px;
+}
+
+#play {
+    color: white;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.video-section > div {
+    width: 80%;
+}
+
+.video-section > div > h2 {
+    font-size: 17px;
+}
+
+.video-section > div > iframe{
+    width: 100%;
+    height: 300px;
+}
+
+.lectures-section {
+    width: 35%;
+    height: auto;
+    padding: 10px;
+    background: #EAF1FF;
+    margin-top: 17px;
+}
+
+.lectures-wrapper {
+    text-align: -webkit-center;
+    margin-top: 10px;
+}
+.lectures-section > aside > h2 {
+    font-size: 17px;
+}
+
+.lectures-section > aside > ul {
+    padding-left: 0px;
+    width: 65%;
+    text-align: left;
+}
+
+.lectures-section > aside > ul > button > li {
+    list-style: none;
+    border-bottom: 1px solid black;
+    padding: 17px 0px;
+}
+
+.lectures-section > aside > ul > button{
+    background: transparent;
+    border: none;
+    width: 100%;
+    text-align: left;
+}
+
+
+.lectures-section > aside > ul > button > li {
+    color: black;
+    text-decoration: none;
+
+}
+
+.lectures-section > aside > ul > button > li:hover {
+    font-weight: bold;
+}
+
+.lectures-section > aside > button {
+    color: #296CFB;
+    border: 1px solid #296CFB;
+    padding: 10px 25px;
+    background-color: transparent;
+    margin-top: 10px;
+    cursor: pointer;
+  
+}

@@ -1,0 +1,10 @@
+<body class="container-fluid m-0 p-0 g-0" id="profile">
+    <app-profile-aside class="row m-0 mb-4 pb-4 col-3"></app-profile-aside>
+      <section class="col-8">
+        <div class="row g-4 m-0 p-0 mt-4 pt-4">
+          <app-course-item *ngFor="let course of randomCourses$ | async" [course]="course" class="col-12 col-lg-6" ></app-course-item>
+           <app-coach-item-bo *ngFor="let coach of randomCoaches$ | async" [coach]="coach" class="col-12 col-lg-6"></app-coach-item-bo>
+        </div>
+      </section>
+    </body>
+

@@ -1,0 +1,10 @@
+
+
+<div *ngIf="!(isAuthenticated$|async)" >
+   <app-home-not-authenticated></app-home-not-authenticated>
+</div>
+<div *ngIf="isAuthenticated$|async" >
+    <app-home-authenticated></app-home-authenticated>
+</div>
+
+

@@ -1,0 +1,183 @@
+<div class="edit-course-form-wrapper">
+                <form [formGroup]="editCourseForm" (ngSubmit)="editCourse()" enctype="multipart/form-data" >
+                    <!-- <pre>{{createCourseForm.value |json}}</pre> -->
+                    <div class="form-input-wrapper">
+                        <input type="text" class="form-control" id="courseName" formControlName="name" [(ngModel)]="courseToEdit.name">
+                        <label for="courseName" class="stay-top">Course Name</label>
+                    </div>
+                    <div class="alert alert-danger" *ngIf="c?.name.touched && c.name.errors?.required">
+                        This field is required!
+                     </div>
+                     <div class="alert alert-danger" *ngIf="c.name.errors?.minlength">
+                        Length must be {{c.name.errors.minlength.requiredLength}} chars!
+                     </div>
+                    <div class="form-input-wrapper">
+                        <input type="text" formControlName="price" class="form-control" id="price" [(ngModel)]="courseToEdit.price">
+                        <label for="price" [className]="c.price.value ? 'stay-top' : ''">Course Price</label>
+                    </div>
+                    <div class="alert alert-danger" *ngIf="c.price.touched && c.price.errors?.required">
+                        This field is required!
+                     </div>
+                     <div class="alert alert-danger" *ngIf="c.price.errors?.min">
+                        Price must be positive number!
+                     </div>
+                    <div class="form-input-wrapper">
+                        <textarea type="text" formControlName="description" class="form-control" id="description" [(ngModel)]="courseToEdit.description"></textarea>
+                        <label for="description" [className]="c.description.value ? 'stay-top' : ''">Course Description</label>
+                    </div>
+                    <div class="alert alert-danger" *ngIf="c.description.touched && c.description.errors?.required">
+                        This field is required!
+                     </div>
+                     <div class="alert alert-danger" *ngIf="c.description.errors?.minlength">
+                        Length must be {{c.description.errors.minlength.requiredLength}} chars!
+                     </div>
+                    <div class="form-input-wrapper">
+                        <input type="text" formControlName="videoUrl" class="form-control" id="videoUrl" [(ngModel)]="courseToEdit.videoUrl">
+                        <label for="videoUrl" [className]="c.videoUrl.value ? 'stay-top' : ''">Course Video Introduction</label>
+                    </div>
+                        <div class="alert alert-danger" *ngIf="c.videoUrl.touched && c.videoUrl.errors?.required">
+                            This field is required!
+                         </div>
+                         <div class="alert alert-danger" *ngIf="c.videoUrl.errors?.minlength">
+                            Length must be {{c.videoUrl.errors.minlength.requiredLength}} chars!
+                         </div>  
+                
+                    <div class="form-input-wrapper">
+                        <label for="coursePicture" class="stay-top">Course Image</label>
+                        <img alt="item" [src]="courseToEdit.imageUrl" id="editPicture">
+                        <input type="file" class="form-control" id="coursePicture" (change)="onPictureUpload($event)">
+                    </div>
+
+                    <div class="alert alert-danger" *ngIf="c.imageUrl.touched && c.imageUrl.errors?.required">
+                        This field is required!
+                     </div>
+                    <div class="form-input-wrapper">
+                        <input type="number" formControlName="duration" class="form-control" id="duration" [(ngModel)]="courseToEdit.duration">
+                        <label for="duration" [className]="c.duration.value ? 'stay-top' : ''">Duration</label>
+                    </div>
+                    <div class="alert alert-danger" *ngIf="c.duration.touched && c.duration.errors?.required">
+                        This field is required!
+                     </div>
+                     <div class="alert alert-danger" *ngIf="c.duration.errors?.min">
+                        Duration must be positive number!
+                     </div>
+                    <div class="form-input-wrapper">
+                        <select id="category" class="form-select" formControlName="categories" multiple>
+                            <option value="ART">ART</option>
+                            <option value="DESIGN">DESIGN</option>
+                            <option value="MARKETING">MARKETING</option>
+                            <option value="LEADERSHIP">LEADERSHIP</option>
+                            <option value="PERSONAL_DEVELOPMENT">PERSONAL_DEVELOPMENT</option>
+                            <option value="DATA_SCIENCE">DATA_SCIENCE</option>
+                            <option value="COMPUTER_SCIENCE">COMPUTER_SCIENCE</option>
+                        </select>
+                        <label for="category" class="stay-top">Topic Category</label>
+                    </div>
+                    <div class="form-input-wrapper">
+                        <select id="language" class="form-select" formControlName="languages" multiple>
+                            <option value="ENGLISH">ENGLISH</option>
+                            <option value="SPANISH">SPANISH</option>
+                            <option value="GERMAN">GERMAN</option>
+                            <option value="FRENCH">FRENCH</option>
+                        </select>
+                        <label for="language" class="stay-top">Topic Language</label>
+                    </div>
+                    <div class="basic-input-wrapper">
+                        <label for="startDate" class="stay-top">Course start date</label>
+                        <input type="datetime-local" formControlName="startDate" class="form-control" id="startDate" [(ngModel)]="courseToEdit.startDate">
+                    </div>
+                    <div class="alert alert-danger" *ngIf="c.startDate.touched && c.startDate.errors?.required">
+                        This field is required!
+                     </div>
+                    <div class="basic-input-wrapper">
+                        <label for="endDate">Course end date</label>
+                        <input type="datetime-local" formControlName="endDate" class="form-control" id="endDate" [(ngModel)]="courseToEdit.endDate">
+                    </div>
+                    <div class="alert alert-danger" *ngIf="c.endDate.touched && c.endDate.errors?.required">
+                        This field is required!
+                     </div>
+                    <div class="form-input-wrapper">
+                        <input type="text" formControlName="lector" class="form-control" id="lector" [(ngModel)]="courseToEdit.lector">
+                        <label for="lector" [className]="c.lector.value ? 'stay-top' : ''">Lector name</label>
+                    </div>
+                    <div class="alert alert-danger" *ngIf="c.lector.touched && c.lector.errors?.required">
+                        This field is required!
+                     </div>
+                     <div class="alert alert-danger" *ngIf="c.lector.errors?.minlength">
+                        Length must be {{c.lector.errors.minlength.requiredLength}} chars!
+                     </div> 
+                    <div class="form-input-wrapper">
+                        <input type="text" formControlName="lectorDescription" class="form-control" id="lectorDescription" [(ngModel)]="courseToEdit.lectorDescription">
+                        <label for="lectorDescription" [className]="c.lectorDescription.value ? 'stay-top' : ''">Lector Description</label>
+                    </div>
+                    <div class="alert alert-danger" *ngIf="c.lectorDescription.touched && c.lectorDescription.errors?.required">
+                        This field is required!
+                     </div>
+                     <div class="alert alert-danger" *ngIf="c.lectorDescription.errors?.minlength">
+                        Length must be {{c.lectorDescription.errors.minlength.requiredLength}} chars!
+                     </div>
+                    <div class="form-input-wrapper">
+                        <input type="text" formControlName="skills" class="form-control" id="skills" [(ngModel)]="courseToEdit.skills">
+                        <label for="skills" [className]="c.skills.value ? 'stay-top' : ''">Skills (example: skill1, skill2,skil3,...)</label>
+                    </div>
+                    <div class="alert alert-danger" *ngIf="c.skills.touched && c.skills.errors?.required">
+                        This field is required!
+                     </div>
+                     <div class="alert alert-danger" *ngIf="c.skills.errors?.minlength">
+                        Length must be {{c.skills.errors.minlength.requiredLength}} chars!
+                     </div>
+                    <div class="resources mb-3">
+                        <ng-container formArrayName="lectures">
+                            <ng-container *ngFor="let lecture of lectures.controls; let i = index">
+                      <div [formGroup]="lecture">
+                          <h3 class="lecture-header">Lecture {{i + 1}}</h3>
+                        <div class="form-input-wrapper">
+                            <input type="text" formControlName="lectureName" class="form-control" id="lectureName">
+                            <label for="lectureName" className="stay-top">Lecture name</label>
+                        </div>
+                        <div class="alert alert-danger" *ngIf="lecture.controls.lectureName.touched && lecture.controls.lectureName.errors?.required">
+                            This field is required!
+                         </div>
+                         <div class="alert alert-danger" *ngIf="lecture.controls.lectureName.errors?.minlength">
+                            Length must be {{lecture.controls.lectureName.errors.minlength.requiredLength}} chars!
+                         </div>
+                        <div class="form-input-wrapper">
+                            <input type="text" class="form-control" id="resourceUrl" formControlName="resourceUrl">
+                            <label for="resourceUrl" className="stay-top">Lecture Resource Url</label>
+                        </div>
+                        <div class="alert alert-danger" *ngIf="lecture.controls.resourceUrl.touched && lecture.controls.resourceUrl.errors?.required">
+                            This field is required!
+                         </div>
+                         <div class="alert alert-danger" *ngIf="lecture.controls.resourceUrl.errors?.minlength">
+                            Length must be {{lecture.controls.resourceUrl.errors.minlength.requiredLength}} chars!
+                         </div>
+                        <div class="form-input-wrapper">
+                            <input type="text" formControlName="lectureDescription" class="form-control" id="lectureDescription">
+                            <label for="lectureDescription" className="stay-top">Lecture Description</label>
+                        </div>
+                        <div class="alert alert-danger" *ngIf="lecture.controls.lectureDescription.touched && lecture.controls.lectureDescription.errors?.required">
+                            This field is required!
+                         </div>
+                         <div class="alert alert-danger" *ngIf="lecture.controls.lectureDescription.errors?.minlength">
+                            Length must be {{lecture.controls.lectureDescription.errors.minlength.requiredLength}} chars!
+                         </div>
+
+                        <button class="btn primary-btn col-12 mt-3" type="button" (click)="removeLecture(i)">
+                            Remove Lecture
+                        </button>     
+                    </div>
+                    </ng-container>
+                       </ng-container>
+                    </div>
+                    <div class="mt-3">
+                        <button *ngIf="!isEditLecturesBtnClicked" class="btn primary-outline-btn col-12" type="button" id="editLecture"(click)="initLectures()">Edit Lectures</button>
+                    </div>
+                    <div class="mt-3">
+                        <button class="btn primary-outline-btn col-12" type="button" id="addLecture"(click)="addLecture()">Add Lecture</button>
+                    </div>
+                    <div class="pt-3">
+                        <button class="btn primary-btn col-12" type="submit" [disabled]="editCourseForm.invalid">Edit Course</button>
+                    </div>
+                </form>
+            </div>
+

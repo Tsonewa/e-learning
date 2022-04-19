@@ -1,0 +1,89 @@
+<section class="col-12 d-flex align-items-center justify-content-center">
+  <div class="form-input-wrapper">
+    <div class="form-dialog form-lg form-dialog-centered">
+      <div class="form-content">
+        <div class="form-header">
+          <h5 class="form-title" >Coach edit</h5>
+          <button type="button" class="btn p-0 m-0" data-bs-dismiss="form" aria-label="Close">
+            <img src="./assets/img/close_icon.svg" alt="#" height="20">
+          </button>
+        </div>
+        <div class="form-input-wrapper" >
+          <form [formGroup]="formEdit" (submit)="editCoach(coachId.id)" enctype="multipart/form-data" id="editForm">
+            <div class="form-input-wrapper">
+              <input type="text" class="form-control" id="coachName" formControlName="name" [(ngModel)]="coachId.name">
+              <label for="coachName" class="stay-top">Coach Name</label>
+            </div>
+            <div class="alert alert-danger" *ngIf="c.name.touched && c.name.errors?.required">
+                      This field is required!
+            </div>
+            <div class="alert alert-danger" *ngIf="c.name.errors?.minlength">
+                      Length must be {{c.name.errors.minlength.requiredLength}} chars!
+            </div>
+            <div class="form-input-wrapper">
+              <input type="text" class="form-control" id="coachEmail" formControlName="email" [(ngModel)]="coachId.email">
+              <label for="coachEmail" class="stay-top">Coach Email</label>
+            </div>
+            <div class="alert alert-danger" *ngIf="c.email.touched && c.email.errors?.required">
+              This field is required!
+            </div>
+            <div class="form-input-wrapper">
+              <input type="text" class="form-control" id="company" formControlName="company" [(ngModel)]="coachId.company">
+              <label for="company" class="stay-top">Company</label>
+            </div>
+            <div class="alert alert-danger" *ngIf="c.company.touched && c.company.errors?.required">
+              This field is required!
+            </div>
+            <div class="alert alert-danger" *ngIf="c.company.errors?.minlength">
+              Length must be {{c.company.errors.minlength.requiredLength}} chars!
+            </div>
+            <div class="form-input-wrapper">
+              <label for="coachPicture" class="stay-top">Coach Picture</label>
+              <img alt="item" [src]="coachId.picture" id="editPicture">
+              <input type="file" class="form-control" id="coachPicture"
+                     (change)="onFileSelected($event)" >
+            </div>
+            <div class="alert alert-danger" *ngIf="c.picture.touched && c.picture.errors?.required">
+              This field is required!
+            </div>
+            <div class="form-input-wrapper">
+              <input type="text" class="form-control" id="pricePerSession" formControlName="price" [(ngModel)]="coachId.price">
+              <label for="pricePerSession" class="stay-top">Price per session</label>
+            </div>
+            <div class="alert alert-danger" *ngIf="c.price.touched && c.price.errors?.required">
+              This field is required!
+            </div>
+            <div class="alert alert-danger" *ngIf="c.price.errors?.min">
+              Length must be {{c.price.errors.min.required}} chars!
+            </div>
+            <div class="form-input-wrapper">
+              <input type="text" class="form-control" id="coachTopic" formControlName="topic" [(ngModel)]="coachId.topic">
+              <label for="coachTopic" class="stay-top">Coach Topic</label>
+            </div>
+            <div class="alert alert-danger" *ngIf="c.topic.touched && c.topic.errors?.required">
+              This field is required!
+            </div>
+            <div class="form-input-wrapper">
+              <label for="startDate" class="stay-top">Session start date</label>
+              <input type="datetime-local" class="form-control" id="startDate" formControlName="startDate" [(ngModel)]="coachId.startDate">
+            </div>
+            <div class="alert alert-danger" *ngIf="c.startDate.touched && c.startDate.errors?.required">
+              This field is required!
+            </div>
+            <div class="form-input-wrapper">
+               <label for="endDate" class="stay-top">Session end date</label>
+               <input type="datetime-local" class="form-control" id="endDate" formControlName="endDate"
+                      [(ngModel)]="coachId.endDate">
+            </div>
+            <div class="alert alert-danger" *ngIf="c.endDate.touched && c.endDate.errors?.required">
+              This field is required!
+            </div>
+            <div class="pt-3">
+              <button class="btn primary-btn col-12" type="submit"  [disabled]="invalid">Edit Coach</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

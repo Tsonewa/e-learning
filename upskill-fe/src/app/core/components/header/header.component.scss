@@ -1,0 +1,77 @@
+@import "../../../../styles.scss";
+@import "../../../../variables";
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Source+Sans+Pro&display=swap");
+
+header {
+     @include flex(row, wrap, space-between, center);
+     height: 120px;
+     box-shadow: 0 0 10px gray;
+     position: sticky;
+     top: 0;
+     width: 100%;
+     background: white;
+     z-index: 999
+}
+
+.logo {
+     @include flex(row, wrap, space-between, center);
+     &-image {
+          padding-left: 80px;
+          img {
+               width: 100px;
+          }
+     }
+     &-text {
+          @include source-sans-pro(2em, 600);
+          letter-spacing: 2px;
+          margin-left: 20px;
+     }
+}
+
+.list {
+     list-style: none;
+     @include flex(row, wrap, space-between, center);
+     margin-right: 100px;
+     width: 350px;
+     padding: 20px;
+     &-items {
+          &-href {
+               display: inline-block;
+               padding: 5px 30px;
+               @include source-sans-pro(1.2em, 100);
+               text-align: center;
+          }
+     }
+     .login {
+          color: $button-blue;
+          border: 1px solid $button-blue;
+          text-decoration: none;
+     }
+     .demo {
+          background-color: $button-blue;
+          color: white;
+     }
+}
+
+.auth-header {
+     background: $green-color;
+     margin-right: 100px;
+     padding: 22px 25px;
+     border-radius: 100%;
+     color: white;
+     font-weight: bold;
+}
+
+.nav-links li {
+  margin-right: 75px !important;
+}
+
+.nav-links a {
+  letter-spacing: 1.1px;
+  color: #000;
+  font-weight: 700;
+}
+
+.nav-links a:hover {
+  color: #296CFB;
+}

@@ -1,0 +1,67 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./variables";
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
+/* Resets */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+@mixin flex($direction, $wrap, $justify, $align) {
+    display: flex;
+    flex-flow: $direction $wrap;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@mixin source-sans-pro($font-size, $font-weight) {
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: $font-size;
+    font-weight: $font-weight;
+}
+
+@mixin breakpoint($point) {
+    @if $point== mobile {
+        @media screen and(max-width:768px) {
+            @content;
+        }
+    } @else if $point== laptop {
+        @media screen and(min-width:1500px) {
+            @content;
+        }
+    }
+}
+
+html,
+body {
+    height: 100%;
+}
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
+@import "~ngx-toastr/toastr";
+
+html,
+body {
+    height: 100%;
+}
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+#profile {
+    display: flex !important;
+}
+
+.test-panel-class {  
+    .mat-dialog-container {
+        background: white !important;
+    }
+}

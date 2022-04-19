@@ -1,0 +1,32 @@
+    <div class="custom-card">
+      <div class="custom-card-bg px-3">
+        <img  [src]="course.imageUrl" alt="#" (click)="onDetailsDialog()">
+        <button *ngIf="isAdmin$ | async" class="btn edit-btn m-0 p-0" [routerLink]="['/course/edit', course.courseId]">
+          <img src="./assets/img/pencil.svg" alt="edit">
+        </button>
+      </div>
+      <div class="custom-card-details row g-0 m-0 p-4">
+        <div class="col">
+          <p class="coach-topic">{{course.name}}</p>
+          <p *ngIf="!(isEmployee$| async)" class="price">{{course.price}}€ per person</p>
+          <p *ngIf="isEmployee$ | async" class="price">{{course.lectureCount}} lectures</p>
+        </div>
+        <div class="col text-end">
+           <p *ngIf="isBusinessOwner$ | async">{{course.lector}}</p>
+           <p *ngIf="isEmployee$ | async">{{course.lector}}</p>         
+          <img src="./assets/img/google.png" alt="Coach company" height="29">
+        </div>
+          <div *ngIf="isAdmin$ | async" class="col-12 mt-2 d-flex justify-content-center">
+          <button *ngIf="course.courseStatus == 'delete'" class="btn primary-btn" type="button" (click)="onDeleteCourse(course.courseId)">Delete</button>
+        </div>
+        <div *ngIf="isBusinessOwner$ | async" class="col-12 mt-2 d-flex justify-content-center">
+          <button *ngIf="course.courseStatus == 'remove'" class="btn primary-btn" type="button" (click)="onRemoveCourse(course.courseId)">Remove</button>
+          <button *ngIf="course.courseStatus == 'add'" class="btn primary-btn" type="button" (click)="onAddCourse(course.courseId)">Add</button>
+        </div>
+        <div *ngIf="isEmployee$ | async" class="col-12 mt-2 d-flex justify-content-center">
+          <button  *ngIf="course.status === 'ENROLL' " (click)="changeStatus(course.courseId)" class="btn primary-btn" type="button">{{course.status}}</button>
+          <button *ngIf="course.status === 'PRACTICE' || course.status === 'CONTINUE'"  [class]="course.status === 'PRACTICE' ? 'btn primary-outline-btn' : 'btn primary-btn'" type="button" [routerLink]="['/stream', course.courseId]">{{course.status}}</button>
+        </div>
+      </div>
+    </div>
+
